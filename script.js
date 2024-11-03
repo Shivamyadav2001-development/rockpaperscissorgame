@@ -5,6 +5,7 @@ const choices = ["rock", "paper", "scissors"];
 const resultText = document.getElementById("resultText");
 const playerScoreDisplay = document.getElementById("playerScore");
 const computerScoreDisplay = document.getElementById("computerScore");
+const computerChoiceDisplay = document.getElementById("computerChoice"); // New element
 
 document.querySelectorAll(".btn").forEach(button => {
     button.addEventListener("click", () => {
@@ -46,6 +47,8 @@ function updateScores(winner) {
 }
 
 function displayResult(player, computer, winner) {
+    computerChoiceDisplay.textContent = computer === "rock" ? "🪨" : (computer === "paper" ? "📄" : "✂️");
+    
     if (winner === "draw") {
         resultText.textContent = `It's a draw! You both chose ${player}.`;
     } else if (winner === "player") {
@@ -54,3 +57,4 @@ function displayResult(player, computer, winner) {
         resultText.textContent = `You lose! ${computer.charAt(0).toUpperCase() + computer.slice(1)} beats ${player}.`;
     }
 }
+
